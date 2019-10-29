@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Template/gaston2.xhtml">
+	<ui:param name="padge_name" value="Accueil" />
+	<ui:define name="a">
+	<h:form>
+
+
+			<h:outputText
+				value="Bonjour #{loginBean.employe.prenom} #{loginBean.employe.nom}" /> 
+				<div class="ui-fluid">
+			<div class="ui-g">
+				<div class="ui-g-12">
+					<div class="card card-w-title">
+						<h1>List Of Your Timesheets</h1>
+						<div id="form:j_idt73"
+							class="ui-datatable ui-widget ui-datatable-reflow">
+
+							<div class="ui-datatable-header ui-widget-header ui-corner-top">
+								List Of Your Timesheets</div>
+
+							<div class="ui-datatable-tablewrapper">
+								<table role="grid">
+									<thead id="form:j_idt73_head">
+										<tr role="row">
+											<th id="form:j_idt73:j_idt75"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Id" scope="col"><span
+												class="ui-column-title">Name of project</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+											<th id="form:j_idt73:j_idt77"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Year" scope="col"><span
+												class="ui-column-title">Nombre de jour a travailler</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+											
+											<th id="form:j_idt73:j_idt81"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Color" scope="col"><span
+												class="ui-column-title">Projet a faire</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+											<th id="form:j_idt73:j_idt81"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Color" scope="col"><span
+												class="ui-column-title">Etat Du Projet</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+												<th id="form:j_idt73:j_idt81"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Color" scope="col"><span
+												class="ui-column-title">Action</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+										</tr>
+									</thead>
+									<tbody id="form:j_idt73_data"
+										class="ui-datatable-data ui-widget-content" tabindex="0">
+										<h:dataTable value="#{empBean.times}" var="emp" border="1">
+											<h:column data-ri="0" data-rk="203d420b"
+												class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+												role="row" aria-selected="false">
+
+												<h:outputText value="#{emp.etatTache}" />
+
+											</h:column>
+											<h:column data-ri="0" data-rk="203d420b"
+												class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+												role="row" aria-selected="false">
+
+												<h:outputText value="#{emp.nbreHeureTRavJour}" />
+
+											</h:column>
+											<h:column data-ri="0" data-rk="203d420b"
+												class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+												role="row" aria-selected="false">
+
+												<h:outputText value="#{emp.projet}" />
+
+											</h:column>
+												<h:column data-ri="0" data-rk="203d420b"
+												class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+												role="row" aria-selected="false">
+
+												<h:outputText value="aaa" />
+
+											</h:column>
+											<h:column>
+												<h:commandButton value="Voir Taches"
+							class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							action="#{empBean.reddvoirListtache(emp.projet.idp)}" />
+								</h:column>
+										</h:dataTable>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:form>
+	</ui:define>
+</ui:composition>

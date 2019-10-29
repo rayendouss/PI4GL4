@@ -1,0 +1,145 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Template/gaston2.xhtml">
+	<ui:param name="padge_name" value="Accueil" />
+	<ui:define name="a">
+	<script>
+			$(document).ready(function() {
+				$(".datepicker").datepicker({
+					dateFormat : 'yy-mm-dd',
+					changeMonth : true,
+					changeYear : true,
+					yearRange : "1960:2017"
+				});
+			});
+		</script>
+
+		<h:form>
+			<h:panelGroup columns="2">
+			
+							<div class="ui-fluid">
+			<div class="ui-g">
+				<div class="ui-g-12">
+					<div class="card card-w-title">
+						<h1>List Of Project</h1>
+						<div id="form:j_idt73"
+							class="ui-datatable ui-widget ui-datatable-reflow">
+
+							<div class="ui-datatable-header ui-widget-header ui-corner-top">
+								List Of Project</div>
+
+							<div class="ui-datatable-tablewrapper">
+								<table role="grid">
+									<thead id="form:j_idt73_head">
+										<tr role="row">
+											<th id="form:j_idt73:j_idt75"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Id" scope="col"><span
+												class="ui-column-title">Name of project</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+											<th id="form:j_idt73:j_idt77"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Year" scope="col"><span
+												class="ui-column-title">End Date</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+											<th id="form:j_idt73:j_idt79"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Brand" scope="col"><span
+												class="ui-column-title">Start Date</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+											<th id="form:j_idt73:j_idt81"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Color" scope="col"><span
+												class="ui-column-title">Description</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+												<th id="form:j_idt73:j_idt81"
+												class="ui-state-default ui-sortable-column"
+												role="columnheader" aria-label="Color" scope="col"><span
+												class="ui-column-title">Action</span><span
+												class="ui-sortable-column-icon ui-icon ui-icon-carat-2-n-s"></span></th>
+										
+										</tr>
+									</thead>
+									<tbody id="form:j_idt73_data"
+										class="ui-datatable-data ui-widget-content" tabindex="0">
+										<h:dataTable value="#{projetBean.tacheAff}" var="a" border="1">
+											<h:column data-ri="0" data-rk="203d420b"
+												class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+												role="row" aria-selected="false">
+
+												<h:outputText value="#{a.desct}" />
+
+											</h:column>
+											<h:column data-ri="0" data-rk="203d420b"
+												class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+												role="row" aria-selected="false">
+
+												<h:outputText value="#{a.startDate}" />
+
+											</h:column>
+											<h:column data-ri="0" data-rk="203d420b"
+												class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+												role="row" aria-selected="false">
+
+												<h:outputText value="#{a.endDate}" />
+
+											</h:column>
+											<h:column data-ri="0" data-rk="203d420b"
+												class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+												role="row" aria-selected="false">
+
+												<h:outputText value="#{a.nomt}" />
+
+											</h:column>
+											
+
+												
+
+												<script id="j_idt216_s" type="text/javascript">
+														PrimeFaces
+																.cw(
+																		"CommandButton",
+																		"widget_j_idt216",
+																		{
+																			id : "j_idt216"
+																		});
+												</script>
+ <br></br><br></br>
+					<h:column data-ri="0" data-rk="203d420b"
+												class="ui-widget-content ui-datatable-even ui-datatable-selectable"
+												role="row" aria-selected="false">
+
+												<h:commandButton value="Delete"
+							class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							action="#{tacheBean.removet(a.idt)}" />
+
+												<script id="j_idt216_s" type="text/javascript">
+														PrimeFaces
+																.cw(
+																		"CommandButton",
+																		"widget_j_idt216",
+																		{
+																			id : "j_idt216"
+																		});
+												</script>				
+
+
+
+</h:column>
+											
+										</h:dataTable>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			</div>
+</h:panelGroup>
+</h:form>
+	</ui:define>
+</ui:composition>

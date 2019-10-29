@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:param name="List_Employe" value="Affichage" />
+	<ui:define name="content">
+		<h:panelGroup columns="2">
+			<h:form>
+				<h:dataTable value="#{projetBean.projects}" var="proj"
+					border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="nom" />
+						</f:facet>
+						<h:outputText value="#{proj.nomp}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="start date" />
+						</f:facet>
+						<h:outputText value="#{proj.startDate}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="end date" />
+						</f:facet>
+						<h:outputText value="#{proj.endDate}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="descp" />
+						</f:facet>
+						<h:outputText value="#{proj.descp}" />
+					</h:column>
+					
+
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>
