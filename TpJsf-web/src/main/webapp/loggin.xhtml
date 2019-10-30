@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<!-- Mirrored from www.primefaces.org/babylon/login.xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Oct 2019 10:28:44 GMT -->
+<!-- Added by HTTrack -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Template/template.xhtml">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:define name="menu">
+		<h:form id="form">
+			<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<!-- /Added by HTTrack -->
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link type="text/css" rel="stylesheet"
+	href="javax.faces.resource/theme.cssb7c2.css?ln=primefaces-babylon-blue-accent" />
+<link type="text/css" rel="stylesheet"
+	href="javax.faces.resource/fa/font-awesome.css68f8.css?ln=primefaces&amp;v=7.0" />
+<link type="text/css" rel="stylesheet"
+	href="javax.faces.resource/components.css68f8.css?ln=primefaces&amp;v=7.0" />
+<script type="text/javascript"
+	src="javax.faces.resource/jquery/jquery.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<script type="text/javascript"
+	src="javax.faces.resource/core.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<script type="text/javascript"
+	src="javax.faces.resource/components.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<script type="text/javascript"
+	src="javax.faces.resource/jquery/jquery-plugins.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<link type="text/css" rel="stylesheet"
+	href="javax.faces.resource/css/layout-blue.cssc7f4.css?ln=babylon-layout" />
+<script type="text/javascript">
+	if (window.PrimeFaces) {
+		PrimeFaces.settings.locale = 'en_US';
+		PrimeFaces.settings.projectStage = 'Development';
+	}
+</script>
+
+<title>ADVYTEAM - Login</title>
+			</head>
+			<body class="login-body">
+
+				<div class="login-panel" />
+
+				<div class="login-content">
+					<img id="j_idt7"
+						src="javax.faces.resource/images/a.jpg?ln=babylon-layout" 
+						alt="" />
+
+					<h1>
+						<span>SIGN IN</span> TO ADVYTEAM
+					</h1>
+
+					<p>Welcome, please use the form to sign-in.</p>
+
+					<div class="login-input-wrapper">
+						<h:inputText id="username" name="username" type="text"
+							class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+							placeholder="Username" value="#{loginBean.login}"/>
+						<script id="username_s" type="text/javascript">
+							$(function() {
+								PrimeFaces.cw("InputText", "widget_username", {
+									id : "username",
+									maxlength : -2147483648
+								});
+							});
+						</script>
+						<i class="fa fa-user" />
+					</div>
+
+					<div class="login-input-wrapper">
+						<h:inputSecret id="password" name="password" type="password"
+							class="ui-inputfield ui-password ui-widget ui-state-default ui-corner-all"
+							placeholder="Password" value="#{loginBean.password}" />
+						<script id="password_s" type="text/javascript">
+							$(function() {
+								PrimeFaces.cw("Password", "widget_password", {
+									id : "password"
+								});
+							});
+						</script>
+						<i class="fa fa-lock" />
+					</div>
+					<h:commandButton id="j_idt11" value="Connexion" 
+					class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+					action="#{loginBean.doLogin()}" />
+					<script id="j_idt11_s" type="text/javascript">
+						$(function() {
+							PrimeFaces.cw("Button", "widget_j_idt11", {
+								id : "j_idt11"
+							});
+						});
+					</script>
+				</div>
+				<!-- Mirrored from www.primefaces.org/babylon/login.xhtml by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 21 Oct 2019 10:28:44 GMT -->
+			</body>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

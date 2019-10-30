@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Template/gaston.xhtml">
+	<ui:param name="padge_name" value="Accueil" />
+	<ui:define name="contenta">
+
+		<h:form>
+
+			<h:outputText
+				value="Bonjour #{loginBean.employe.prenom} #{loginBean.employe.nom}" /> |
+            <h:panelGroup columns="2">
+
+				<table>
+					<!-- <tr>
+						<td><h:outputText value="ID Training"></h:outputText></td>
+						<td><h:inputText value="#{trainingBean.id_training}"></h:inputText></td>
+					</tr> -->
+					  
+					
+					<tr>
+						<td><h:outputText value="Skill"></h:outputText></td>
+						<td><h:inputText value="#{trainerBean.id_skill}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Available"></h:outputText></td>
+						<td><h:inputText value="#{trainerBean.isAvailable}"></h:inputText></td>
+					</tr>
+					
+					
+
+
+					<tr>
+						<td colspan="2"><h:commandButton value="Ajouter Trainer"
+								action="#{trainerBean.addts()}" /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><h:commandButton
+								value="Update Trainer"
+								action="#{trainerBean.updateTrainer()}" /></td>
+					</tr>
+				</table>
+				<br></br>
+				<br></br>
+				<h:dataTable value="#{trainerBean.trainers}" var="ts" border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="ID Trainer" />
+						</f:facet>
+						<h:outputText value="#{ts.id_trainer}" />
+					</h:column>
+					
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Skill" />
+						</f:facet>
+						<h:outputText value="#{ts.id_skill}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Available" />
+						</f:facet>
+						<h:outputText value="#{ts.isAvailable}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton
+							actionListner="#{trainerBean.removeTrainer(ts.id_trainer)}"
+							value="Supprimer"></h:commandButton>
+						<h:commandButton action="#{trainerBean.displayEmploye(ts)}"
+							value="Afficher"></h:commandButton>
+					</h:column>
+
+				</h:dataTable>
+			</h:panelGroup>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>
