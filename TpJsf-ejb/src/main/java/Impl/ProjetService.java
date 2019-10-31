@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import Entities.Employe;
 import Entities.Project;
+import Entities.Tache;
 import Entities.Timesheet;
 import Interface.ProjetServiceRemote;
 @Stateless
@@ -41,5 +42,31 @@ public class ProjetService implements ProjetServiceRemote {
 				return emp;
 		
 	}
+	@Override
+	public void deleteProjetById(int TId) {
+		Project entity = new Project();
+		Query query =
+				em.createQuery("SELECT e FROM Project e WHERE e.idp=:TId  ",
+				Project.class);
+				query.setParameter("TId", TId);
+			entity= (Project) query.getSingleResult();
+		em.remove(entity);
+		
+	}
+
+	@Override
+	public Project getProjectbyID(int i) {
+		
+	return em.find(Project.class, i);
+		
+		}
+	@Override
+	public List<Tache> getAllTacheByProjet(int projectid) {
+		
+		
+		List<Tache> taches = em.find(Project.class,projectid).getTaches();
+		return taches ;
+	}
+
 	
 }

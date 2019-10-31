@@ -43,11 +43,8 @@ public class EmployeService implements EmployeServiceRemote {
 	}
 	
 	public Employe getEmployesbyID(int i) {
-		
-		Query query = em.createQuery("Select e from Employe e where e.id=:i",
-		Employe.class);
-		query.setParameter("id", i);
-		return (Employe) query.getSingleResult();
+		System.out.println(em.find(Employe.class, i)+"gaston");
+	return em.find(Employe.class, i);
 		
 		}
 	
@@ -86,5 +83,7 @@ public Tache getTachebyID(int i) {
 		return (Tache) query.getSingleResult();
 		
 		}
+
+
 	
 }
