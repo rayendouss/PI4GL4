@@ -6,57 +6,69 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-//import com.sun.faces.taglib.html_basic.SelectOneMenuTag;
+
 
 import Entities.Employe;
+import Entities.Project;
 import Entities.Tache;
 import Entities.Timesheet;
 import Interface.EmployeServiceRemote;
+import Interface.ProjetServiceRemote;
 import Interface.TimesheetServiceRemote;
-
-import Entities.Training;
-import Entities.Trainer;
-import Interface.TrainingServiceRemote;
-
-@ManagedBean (name="timesheetBean")
+@ManagedBean
 @SessionScoped
 public class TimeSheetBean {
-	private static final long serialVersionUID = 1L;
-	private Training training;
-	private int trainerId;
-	 private int id_training;
-	private int id_skill ;
-	private int duree ;	 
-	
+	private Timesheet timesheet;
+	private int idg ;
+	private int idpr ;
+	 private int idT;
+		private String etatTache ;
+	private int nbreHeureTRavS ;	 
+	private int nbreHeureTRavJour ;
+	 private int nbreConge ;
 	 private Employe employe ;
-	 private Trainer trainer ;
-	 private List<Training> trainings ;
-	 
+	 private List<Timesheet> timesheets ;
+	 private Tache tache ;
 	 private Integer IdToBeUpdated;
 	 private List<Employe> employes ;
 	 public Employe selectedEmploye;
-	 public List<Employe> getEmployes() {
+	 private List<Project> projects ;
+	
+	 
+	 
+	public int getIdpr() {
+		return idpr;
+	}
+	public void setIdpr(int idpr) {
+		this.idpr = idpr;
+	}
+	public List<Project> getProjects() {
+		projects = ts.getAllPr();
+		return projects;
+	}
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+	public int getIdg() {
+		return idg;
+	}
+	public void setIdg(int idg) {
+		this.idg = idg;
+	}
+	public List<Employe> getEmployes() {
 		return employes;
 	}
-	 
-	public int getTrainerId() {
-		return trainerId;
-	}
-
-	public void setTrainerId(int trainerId) {
-		this.trainerId = trainerId;
-	}
-
 	public void setEmployes(List<Employe> employes) {
 		this.employes = employes;
 	}
-	public void displayEmploye(Training empl)
+	public void displayEmploye(Timesheet empl)
 	 {
-	 this.setId_skill(empl.getId_skill());
-	 this.setDuree(empl.getDuree());
-	// this.setTrainer(empl.getTrainer());
+	 this.setEtatTache(empl.getEtatTache());
+	 this.setNbreConge(empl.getNbreConge());
+	 this.setNbreHeureTRavJour(empl.getNbreHeureTRavJour());
+	 this.setNbreHeureTRavS(empl.getNbreHeureTRavS());
 	
-	 this.setIdToBeUpdated(empl.getId_training());
+	 this.setIdToBeUpdated(empl.getIdT());
 	 }
 	public Integer getIdToBeUpdated() {
 		return IdToBeUpdated;
@@ -64,52 +76,61 @@ public class TimeSheetBean {
 	public void setIdToBeUpdated(Integer idToBeUpdated) {
 		IdToBeUpdated = idToBeUpdated;
 	}
-	public Training getTraining() {
-		return training;
+	public Timesheet getTimesheet() {
+		return timesheet;
 	}
-	public void setTraining(Training training) {
-		this.training = training;
+	public void setTimesheet(Timesheet timesheet) {
+		this.timesheet = timesheet;
 	}
-	public int getId_training() {
-		return id_training;
+	public int getIdT() {
+		return idT;
 	}
-	public void setId_training(int id_training) {
-		this.id_training = id_training;
+	public void setIdT(int idT) {
+		this.idT = idT;
 	}
-	public int getId_skill() {
-		return id_skill;
+	public String getEtatTache() {
+		return etatTache;
 	}
-	public void setId_skill(int id_skill) {
-		this.id_skill = id_skill;
+	public void setEtatTache(String etatTache) {
+		this.etatTache = etatTache;
 	}
-	/*public int getDuree() {
-		return Duree;
+	public int getNbreHeureTRavS() {
+		return nbreHeureTRavS;
 	}
-	public void setDuree(int Duree) {
-		this.Duree = Duree;
-	}*/
+	public void setNbreHeureTRavS(int nbreHeureTRavS) {
+		this.nbreHeureTRavS = nbreHeureTRavS;
+	}
+	public int getNbreHeureTRavJour() {
+		return nbreHeureTRavJour;
+	}
+	public void setNbreHeureTRavJour(int nbreHeureTRavJour) {
+		this.nbreHeureTRavJour = nbreHeureTRavJour;
+	}
+	public int getNbreConge() {
+		return nbreConge;
+	}
+	public void setNbreConge(int nbreConge) {
+		this.nbreConge = nbreConge;
+	}
 	
 	
-	
-	public int getDuree() {
-		return duree;
-	}
-
-	public void setDuree(int duree) {
-		this.duree = duree;
-	}
-
 	public Employe getEmploye() {
 		return employe;
 	}
 	public void setEmploye(Employe employe) {
 		this.employe = employe;
 	}
-	public Trainer getTrainer() {
-		return trainer;
+	public Tache getTache() {
+		return tache;
 	}
-	public void setTrainer(Trainer trainer) {
-		this.trainer = trainer;
+	public void setTache(Tache tache) {
+		this.tache = tache;
+	}
+	public TimesheetServiceRemote getTs() {
+		return ts;
+	}
+	public void setTs(TimesheetServiceRemote ts) {
+		this.ts = ts;
 	}
 	
 	public Employe getSelectedEmploye() {
@@ -118,34 +139,27 @@ public class TimeSheetBean {
 	public void setSelectedEmploye(Employe selectedEmploye) {
 		this.selectedEmploye = selectedEmploye;
 	}
-	
-	public TrainingServiceRemote getTs() {
-		return ts;
-	}
-	public void setTs(TrainingServiceRemote ts) {
-		this.ts = ts;
-	}
-	
+
 	@EJB
-	TrainingServiceRemote ts;
+	TimesheetServiceRemote ts;
 	@EJB
 	EmployeServiceRemote es ;
-	
-	public void removeTraining(int id_training)
-	{
-	ts.deleteEmployeById(id_training);
-	}
+	@EJB
+	ProjetServiceRemote ep ;
 	
 	public void addts() {
-		System.out.println(selectedEmploye+"*******************************");
-		Training e = new Training(id_training,id_skill,duree,selectedEmploye,ts.getTrainingrById(trainerId));
-		
-	ts.ajouterTraining(e);
+	
+		Timesheet e = new Timesheet(etatTache,nbreHeureTRavS,nbreHeureTRavJour,nbreConge);
+		e.setEmploye(es.getEmployesbyID(idg));
+		System.out.println("aaaaa"+idpr);
+		e.setProjet(ep.getProjectbyID(idpr));
+		//es.getEmployesbynom(nom)
+	ts.ajouterTimeSheet(e);
 	}
-
-	public List<Training> getTS() {
-		trainings = ts.getAllEmployes();
-		return trainings;
+	
+	public List<Timesheet> getTS() {
+		timesheets = ts.getAllEmployes();
+		return timesheets;
 		}
 	public List<Employe> getAllEmployes()
 	{
@@ -153,21 +167,33 @@ public class TimeSheetBean {
 		employes = es.getAllEmployes();
 		return employes ;
 	}
-	public List<Training> getTrainings() {
-		trainings = ts.getAllEmployes();
-		return trainings;
+	@SuppressWarnings("unchecked")
+	public List<Employe> getAllEmployess()
+	{
+		
+		employes = es.getAllEmployes();
+		return (List<Employe>) employes.get(idT) ;
 	}
-	public void setTrainings(List<Training> trainings) {
-		this.trainings = trainings;
+	public List<Timesheet> getTimesheets() {
+		timesheets = ts.getAllEmployes();
+		return timesheets;
 	}
-	
-	public int updateTraining()
+	public void setTimesheets(List<Timesheet> timesheets) {
+		this.timesheets = timesheets;
+	}
+	public void removeTimesheet(int id)
+	{
+	ts.deleteEmployeById(id);
+	}
+	public int updateTimesheet()
 	{ 
-	Training i=  new Training();
-	i.setId_skill(this.getId_skill());
-	i.setDuree(this.getDuree());
+	Timesheet i=  new Timesheet();
+	i.setEtatTache(this.getEtatTache());
+	i.setNbreConge(this.getNbreConge());
+	i.setNbreHeureTRavJour(this.getNbreHeureTRavJour());
+	i.setNbreHeureTRavS(this.getNbreHeureTRavS());
 	
-	ts.updateTraining(IdToBeUpdated, i );
+	ts.updateTimeSheet(IdToBeUpdated, i );
 	return IdToBeUpdated; 
 	}
 

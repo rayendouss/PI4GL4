@@ -23,5 +23,5 @@ public interface EmployeServiceRemote {
 	void displayEmploye(Employe empl);
 	public Employe getEmployesbyID(int i);
 	public Tache getTachebyID(int i) ;
-
+	
 }

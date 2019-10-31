@@ -16,12 +16,29 @@ import Interface.EmployeServiceRemote;
 @ManagedBean
 @SessionScoped
 public class LoginBean implements Serializable {
-
+  private static int ide ;
+  private static int ida ;
 	private String login;
 	private String password;
 	private Employe employe;
 	private Boolean loggedIn;
 	
+	public static int getIda() {
+		return ida;
+	}
+
+	public static void setIda(int ida) {
+		LoginBean.ida = ida;
+	}
+
+	public static int getIde() {
+		return ide;
+	}
+
+	public static void setIde(int ide) {
+		LoginBean.ide = ide;
+	}
+
 	public String getLogin() {
 		return login;
 	}
@@ -69,9 +86,18 @@ public class LoginBean implements Serializable {
 		String navigateTo = "null";
 		employe = employeService.getEmployeByEmailAndPassword(login, password);
 		if (employe != null && employe.getRole() == Role.ADMINISTRATEUR) {
+			ida=employe.getId();
+			
+		
 			navigateTo = "pages/admin/Ajouter?faces-redirect=true";
 			loggedIn = true;
-		} else {
+		} else if(employe != null && employe.getRole() == Role.TECHNICIEN) {
+			ide=employe.getId();
+			navigateTo = "pages/admin/employe?faces-redirect=true";
+			loggedIn = true;
+		}
+		else
+		{
 			FacesContext.getCurrentInstance().addMessage("form:btn", new FacesMessage("Bad Credentials"));
 		}
 		return navigateTo;

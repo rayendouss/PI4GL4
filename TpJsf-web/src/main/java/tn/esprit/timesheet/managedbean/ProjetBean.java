@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import Entities.Project;
+import Entities.Tache;
 import Entities.Timesheet;
 import Interface.ProjetServiceRemote;
 
@@ -15,13 +16,24 @@ import Interface.ProjetServiceRemote;
 @SessionScoped
 public class ProjetBean {
 	private String nomp;
+	private int idprojet;
 	private Date startDate;
 	private Date endDate;
 	private String descp;
 	public List<Project> projects;
+	public List<Tache> tacheAff;
+	public List<Tache> Alltaches;
 
 	
 	
+
+	public int getIdprojet() {
+		return idprojet;
+	}
+
+	public void setIdprojet(int idprojet) {
+		this.idprojet = idprojet;
+	}
 
 	public List<Project> getProjects() {
 		projects = pr.getAll();
@@ -72,7 +84,16 @@ public class ProjetBean {
 	public void setDescp(String descp) {
 		this.descp = descp;
 	}
+	public List<Tache> getAlltaches() {
+		return Alltaches;
+	}
 
+	public void setAlltaches(List<Tache> alltaches) {
+		Alltaches = alltaches;
+	}
+	public void setTacheAff(List<Tache> tacheAff) {
+		this.tacheAff = tacheAff;
+	}
 	@EJB
 	ProjetServiceRemote pr;
 
@@ -87,5 +108,39 @@ public class ProjetBean {
 
 		return projects;
 	}
+	public void removepr(int id)
+	{
+	pr.deleteProjetById(id);
+	}
 
+
+	public List<Tache> getTacheAff() {
+
+		tacheAff = pr.getAllTacheByProjet(idprojet);
+		return tacheAff;
+	}
+
+
+	public String reddvoirListtache(int id) 
+	{
+		this.idprojet=id;
+		
+		return "tache2?faces-redirect=true";
+	}
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -6,8 +6,10 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import Entities.Employe;
+import Entities.Project;
 import Entities.Timesheet;
 import Interface.EmployeServiceRemote;
 import Interface.TimesheetServiceRemote;
@@ -49,6 +51,21 @@ public class TimesheetService implements TimesheetServiceRemote {
 	public Employe GetEmployeByid(int id)
 	{
 		return es.getEmployesbyID(id);
+	}
+	@Override
+	public List<Project> getAllPr() {
+		List<Project> emp = em.createQuery("Select e from Project e",
+				Project.class).getResultList();
+		return emp;
+	}
+	@Override
+	public List<Timesheet> getTimeSheetByidEmp(int i) {
+		TypedQuery<Timesheet> query = em.createQuery("Select t from Timesheet t where t.employe.id=:i"
+				,
+				Timesheet.class);
+		query.setParameter("i", i);
+		List<Timesheet>emp = query.getResultList();
+				return emp;
 	}
 		
 	}
