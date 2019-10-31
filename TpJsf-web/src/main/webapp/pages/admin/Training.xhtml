@@ -1,0 +1,106 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Template/gaston.xhtml">
+	<ui:param name="padge_name" value="Accueil" />
+	<ui:define name="contenta">
+
+		<h:form>
+
+			<h:outputText
+				value="Bonjour #{loginBean.employe.prenom} #{loginBean.employe.nom}" /> |
+            <h:panelGroup columns="2">
+
+				<table>
+					<!-- <tr>
+						<td><h:outputText value="ID Training"></h:outputText></td>
+						<td><h:inputText value="#{trainingBean.id_training}"></h:inputText></td>
+					</tr> -->
+					  
+					
+					<tr>
+						<td><h:outputText value="Skill"></h:outputText></td>
+						<td><h:inputText value="#{timesheetBean.id_skill}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Training Length"></h:outputText></td>
+						<td><h:inputText value="#{timesheetBean.duree}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Trainer"></h:outputText></td>
+						<td><h:inputText value="#{timesheetBean.trainerId}"></h:inputText></td>
+					</tr>
+					<tr>
+					<td><h:outputText value="choisir employe" ></h:outputText>
+				
+						<h:selectOneMenu>
+								<f:selectItems value="#{timesheetBean.getAllEmployes()}"  ></f:selectItems>
+						</h:selectOneMenu>
+                              </td>
+					</tr>
+
+
+					<tr>
+						<td colspan="2"><h:commandButton value="Ajouter Training"
+								action="#{timesheetBean.addts()}" /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><h:commandButton
+								value="Update Training"
+								action="#{timesheetBean.updateTraining()}" /></td>
+					</tr>
+				</table>
+				<br></br>
+				<br></br>
+				<h:dataTable value="#{timesheetBean.trainings}" var="ts" border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="ID Training" />
+						</f:facet>
+						<h:outputText value="#{ts.id_training}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Training length" />
+						</f:facet>
+						<h:outputText value="#{ts.duree}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText
+								value="Skill" />
+						</f:facet>
+						<h:outputText value="#{ts.id_skill}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Trainer" />
+						</f:facet>
+						<h:outputText value="#{ts.trainer}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Employer" />
+						</f:facet>
+						<h:outputText value="#{ts.employe}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton
+							actionListner="#{timesheetBean.removeTraining(ts.id_training)}"
+							value="Supprimer"></h:commandButton>
+						<h:commandButton action="#{timesheetBean.displayEmploye(ts)}"
+							value="Afficher"></h:commandButton>
+					</h:column>
+
+				</h:dataTable>
+			</h:panelGroup>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>
