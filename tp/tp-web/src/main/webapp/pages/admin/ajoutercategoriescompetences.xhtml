@@ -1,0 +1,140 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Template/gaston.xhtml">
+	<ui:param name="padge_name" value="Accueil" />
+	<ui:define name="contenta">
+ <h:panelGroup columns="2">
+	<h:form>
+		<h:outputText
+				value="Bonjour #{loginBean.employe.prenom} #{loginBean.employe.nom}" /> |
+         
+			 <fieldset>
+         	<legend>Informations employes</legend>
+				<table>
+				<tr>
+						<td><h:outputText value="CIN"></h:outputText></td>
+						<td><h:inputText value="#{tableemployebean.cin}"></h:inputText></td>
+					</tr>
+					
+					
+					
+					<tr>
+						<td><h:outputText value="Nom"></h:outputText></td>
+						<td><h:inputText value="#{tableemployebean.nom}"></h:inputText></td>
+					</tr>
+							
+					<tr>
+						<td><h:outputText value="Prenom"></h:outputText></td>
+						<td><h:inputText value="#{tableemployebean.prenom}"></h:inputText></td>
+					</tr>
+					
+					
+					<tr>
+						<td> <h:outputText value="Niveau Web"></h:outputText> </td>
+						<td> <h:selectOneMenu value="#{tableemployebean.niveauweb}">
+								<f:selectItem itemLabel="Web" itemValue="Web" />
+								<f:selectItems value="#{tniveauweb.niveauweb}" />
+							</h:selectOneMenu></td>
+					</tr>
+					
+					<tr>
+						<td> <h:outputText value="Niveau Desktop"></h:outputText> </td>
+						<td> <h:selectOneMenu value="#{tableemployebean.niveaudesktops}">
+								<f:selectItem itemLabel="Niveau Desktop" itemValue="Niveau Desktop" />
+								<f:selectItems value="#{tniveaudesktops.niveaudesktops}" />
+							</h:selectOneMenu></td>
+					</tr>
+					
+					<tr>
+						<td> <h:outputText value="Niveau Langues"></h:outputText> </td>
+						<td> <h:selectOneMenu value="#{tableemployebean.niveaulangues}">
+								<f:selectItem itemLabel="Niveau Langues" itemValue="Niveau Langues" />
+								<f:selectItems value="#{tniveaulangues.niveaulangues}" />
+							</h:selectOneMenu></td>
+					</tr>
+					
+				
+					<tr>
+						<td colspan="2">
+						         <h:commandButton value="Ajouter tableemploye"
+								action="#{tableemployebean.addtableemploye()}" /> 
+								 <h:commandButton
+								value="Mettre A jour tableemploye"
+								action="#{tableemployebean.updatetableemploye()}" /> </td>
+					</tr>
+				</table>
+				</fieldset>
+		
+			
+			<br/> <br/> <br/>
+		
+		
+		
+				<h:dataTable value="#{tableemployebean.tableemployes}" var="tableemploye" border="1"
+				 styleClass="dataTable" rowClasses="even,odd">
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="CIN" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.cin}" />
+					</h:column>
+					
+					
+				
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.nom}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Prenom" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.prenom}" />
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Niveau Web" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.niveauweb}" />
+					</h:column>
+			
+			<h:column>
+						<f:facet name="header">
+							<h:outputText value="Niveau Desctops" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.niveaudesktops}" />
+					</h:column>
+			
+			<h:column>
+						<f:facet name="header">
+							<h:outputText value="Niveau Langues" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.niveaulangues}" />
+					</h:column>
+			
+										
+						<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton action="#{tableemployebean.removetableemploye(tableemploye.id)}"
+							value="Supprimer" />
+						<h:commandButton action="#{tableemployebean.displaytableemploye(tableemploye)}"
+							value="Afficher" />
+					</h:column>
+					
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+		
+</ui:define>
+ 
+</ui:composition>

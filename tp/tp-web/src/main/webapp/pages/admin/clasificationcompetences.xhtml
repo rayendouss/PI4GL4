@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Template/gaston.xhtml">
+	<ui:param name="padge_name" value="Accueil" />
+	<ui:define name="contenta">
+           <h:panelGroup columns="2">
+            <h:form>
+           <h:outputText
+				value="Bonjour #{loginBean.employe.prenom} #{loginBean.employe.nom}" />
+				<br/> <br/> 
+            <h:outputText value="Classification competences Web"/>
+            
+            <br/> <br/>
+           
+				<h:dataTable value="#{tableemployecbean.tableemployes}" var="tableemploye" border="1">
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="CIN" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.cin}" />
+					</h:column>
+					
+					
+				
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.nom}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Prenom" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.prenom}" />
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Niveau Web" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.niveauweb}" />
+					</h:column>
+			
+				</h:dataTable>
+			</h:form>
+             </h:panelGroup>
+</ui:define>
+ 
+</ui:composition>

@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Template/gaston.xhtml">
+	<ui:param name="padge_name" value="Accueil" />
+	<ui:define name="contenta">
+
+
+          <h:form>
+          
+               <table>
+					
+					<tr>
+						<td><h:outputText value="Nom domaine competence"></h:outputText></td>
+						<td><h:inputText value="#{domainecompetencebean.name}"></h:inputText></td>
+					</tr>
+					
+					<tr>
+						<td><h:outputText value="Categorie domaine competence"></h:outputText></td>
+					<td>
+						<h:selectOneMenu value="#{domainecompetencebean.console}">
+						<f:selectItem itemLabel="Selectioner type" itemValue="" />
+						<f:selectItem itemLabel="Web" itemValue="Web" />
+						<f:selectItem itemLabel="Desktop" itemValue="Desktop" />
+						<f:selectItem itemLabel="Langue" itemValue="Langue" />
+					</h:selectOneMenu></td>
+					</tr>
+					
+					
+					<tr>
+						<td colspan="2">
+						         <h:commandButton value="Ajouter Competence"
+								action="#{domainecompetencebean.addDomainecompetence()}" /> 
+								 <h:commandButton
+								value="Mettre A jour tablecompetence"
+								action="#{competencebean.updatetablescompetence()}" /> </td>
+					</tr>
+
+               </table>
+          </h:form>
+          
+          <h:form>
+				<h:dataTable value="#{domainecompetencebean.competences}" var="tablecompetence" border="1">
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nom competence" />
+						</f:facet>
+						<h:outputText value="#{tablecompetence.name}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Categorie domaine competence" />
+						</f:facet>
+						<h:outputText value="#{tablecompetence.type}" />
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton action="#{domainecompetencebean.removetablecompetence(tablecompetence.id)}"
+							value="Supprimer" />
+						
+					</h:column>
+					
+				</h:dataTable>
+					
+		</h:form>
+		
+		
+		
+</ui:define>
+ 
+</ui:composition>

@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Template/gaston.xhtml">
+	<ui:param name="padge_name" value="Accueil" />
+	<ui:define name="contenta">
+
+
+
+
+ <h1 >Ajouter Sujet</h1>
+ 
+ <h:form>					
+       <table>
+			     	<tr>
+						<td><h:outputText value="cin"></h:outputText></td>
+     <td>
+        <h:selectOneMenu  id="defa" value="#{employecompetencebean.console}">
+			<f:selectItems value="#{employecompetencebean.employe()}" var="dom" itemValue="#{dom}"  />
+        </h:selectOneMenu>
+        </td>
+        </tr>
+        <tr>
+        <td><h:outputText value="cin"></h:outputText></td>
+       <td>
+        <h:selectOneMenu  id="defades" value="#{employecompetencebean.consoles}">
+			<f:selectItems value="#{employecompetencebean.competence()}" var="dom1" itemValue="#{dom1}"  />
+        </h:selectOneMenu>
+        </td>
+        </tr>
+  
+     <h:commandButton id="bnt" action="#{employecompetencebean.doAdd()}" value="Ajouter sujet" update="grid" />
+   
+  
+  </table>
+ </h:form>
+  
+         
+</ui:define>
+ 
+</ui:composition>

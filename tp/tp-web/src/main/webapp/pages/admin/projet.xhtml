@@ -1,0 +1,116 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/Template/gaston.xhtml">
+	<ui:param name="padge_name" value="Accueil" />
+	<ui:define name="contenta">
+
+		<script>
+			$(document).ready(function() {
+				$(".datepicker").datepicker({
+					dateFormat : 'yy-mm-dd',
+					changeMonth : true,
+					changeYear : true,
+					yearRange : "1960:2017"
+				});
+			});
+		</script>
+
+		<h:form>
+			<h:panelGroup columns="2">
+				<div class="card card-w-title">
+					<h1>InputText</h1>
+
+					<div class="ui-panelgrid ui-widget ui-panelgrid-blank form-group">
+						<div
+							class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+							<div class="ui-g">
+								<div class="ui-panelgrid-cell ui-g-12 ui-md-4">
+									<h:inputText id="a" name="j_idt48" type="text"
+										class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+										placeholder="Name Project" value="#{projetBean.nomp}"></h:inputText>
+
+								</div>
+								<div class="ui-panelgrid-cell ui-g-12 ui-md-4">
+									<h:inputText id="b" name="j_idt49" type="text"
+										class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+										placeholder="Description" value="#{projetBean.descp}"></h:inputText>
+
+								</div>
+
+								<div class="form-group col-md-6">
+									<h:outputLabel>Date Start</h:outputLabel>
+									<h:inputText class="form-control" placeholder="Date Fin"
+										styleClass="form-control datepicker"
+										value="#{projetBean.startDate}">
+										<f:convertDateTime pattern="yyyy-mm-dd" />
+
+									</h:inputText>
+
+								</div>
+								<div class="form-group col-md-6">
+									<h:outputLabel>Date End</h:outputLabel>
+									<h:inputText class="form-control" placeholder="Date Fin"
+										styleClass="form-control datepicker"
+										value="#{projetBean.endDate}">
+										<f:convertDateTime pattern="yyyy-mm-dd" />
+
+									</h:inputText>
+
+								</div>
+							</div>
+
+						</div>
+						<h:commandButton value="Ajouter"
+							class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+							action="#{projetBean.addProj()}" />
+
+
+					</div>
+
+				</div>
+				<h:dataTable value="#{projetBean.projects}" var="p" border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nom Tache" />
+						</f:facet>
+						<h:outputText value="2" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="description" />
+						</f:facet>
+						<h:outputText value="#{p.descp}">
+						</h:outputText>
+					</h:column>
+
+
+				</h:dataTable>
+
+				<script id="a" type="text/javascript">
+					$(function() {
+						PrimeFaces.cw("InputText", "widget_j_idt48", {
+							id : "j_idt48",
+							maxlength : -2147483648
+						});
+					});
+				</script>
+				<script id="b" type="text/javascript">
+					$(function() {
+						PrimeFaces.cw("InputText", "widget_j_idt49", {
+							id : "j_idt49",
+							maxlength : -2147483648
+						});
+					});
+				</script>
+
+
+
+
+			</h:panelGroup>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>

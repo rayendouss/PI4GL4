@@ -1,0 +1,92 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/Template/gaston.xhtml">
+	<ui:param name="padge_name" value="Accueil" />
+	<ui:define name="contenta">
+
+
+          <h:form>
+          
+               <table>
+			     	<tr>
+						<td><h:outputText value="cin"></h:outputText></td>
+						<td><h:inputText value="#{employebean.cin}"></h:inputText></td>
+					</tr>
+					
+					<tr>
+						<td><h:outputText value="Nom"></h:outputText></td>
+						<td><h:inputText value="#{employebean.nom}"></h:inputText></td>
+					</tr>
+					
+					<tr>
+						<td><h:outputText value="Prenom"></h:outputText></td>
+						<td><h:inputText value="#{employebean.prenom}"></h:inputText></td>
+					</tr>
+					
+					<tr>
+						<td><h:outputText value="Niveau"></h:outputText></td>
+						<td><h:inputText value="#{employebean.niveau}"></h:inputText></td>
+					</tr>
+					
+					<tr>
+						<td colspan="2">
+						         <h:commandButton value="Ajouter Employe"
+								action="#{employebean.addEmploye()}" /> 
+								 <h:commandButton
+								value="Mettre A jour tableemploye"
+								action="#{employebean.updatetablesemploye()}" /> </td>
+					</tr>
+
+               </table>
+          </h:form>
+          
+          <h:form>
+				<h:dataTable value="#{employebean.employes}" var="tableemploye" border="1">
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="CIN" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.cin}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nom" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.nom}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Prenom" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.prenom}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Niveau" />
+						</f:facet>
+						<h:outputText value="#{tableemploye.niveau}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton action="#{employebean.removetableemploye(tableemploye.id)}"
+							value="Supprimer" />
+						<h:commandButton action="#{employebean.displaytablesemploye(tableemploye)}"
+							value="Afficher" />
+					</h:column>
+					
+				</h:dataTable>
+					
+		</h:form>
+ 
+</ui:define>
+ 
+</ui:composition>
