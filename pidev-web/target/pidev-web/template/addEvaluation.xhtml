@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="Accueil" />
+	<ui:define name="content">
+		
+			
+
+				<h:panelGroup columns="2">
+					<h:form>
+						<table>
+							<tr>
+								<td><h:outputText value="nom"></h:outputText></td>
+								<td><h:inputText value="#{evaluationBean.nom}"></h:inputText></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="note employe"></h:outputText></td>
+								<td><h:inputText value="#{evaluationBean.noteemploye}"></h:inputText></td>
+							</tr>
+							<tr>
+								<td><h:outputText value="note employe"></h:outputText></td>
+								<td><h:inputText value="#{evaluationBean.notemanager}"></h:inputText></td>
+							</tr>
+
+							<tr>
+								<td><h:outputText value="Description"></h:outputText></td>
+								<td><h:inputText value="#{evaluationBean.description}"></h:inputText></td>
+							</tr>
+
+							<tr>
+								<td colspan="2"><h:commandButton value="Ajouter Evaluation"
+										action="#{evaluationBean.addEvaluation()}" /></td>
+							</tr>
+							<tr>
+						
+							<td colspan="2">	<h:commandButton value="Mettre A jour Employé"
+						action="#{evaluationBean.updateEvaluation}" /></td>
+						</tr>
+						
+							
+						</table>
+					</h:form>
+<h:form>
+				<h:dataTable value="#{evaluationBean.evaluations}" var="evaluation"
+					border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="description" />
+						</f:facet>
+						<h:outputText value="#{evaluation.description}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="date evaluation" />
+						</f:facet>
+						<h:outputText value="#{evaluation.dateeval}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="nom" />
+						</f:facet>
+						<h:outputText value="#{evaluation.nom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Role" />
+						</f:facet>
+						<h:outputText value="#{evaluation.noteemploye}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="note employe" />
+						</f:facet>
+						<h:outputText value=" #{evaluation.notemanager}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton
+							action="#{evaluationBean.removeEvaluation(evaluation.id)}"
+							value="Supprimer" />
+					
+					<h:commandButton action="#{evaluationBean.displayEvaluation(evaluation)}"
+						value="Afficher" />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
